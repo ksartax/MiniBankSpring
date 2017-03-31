@@ -1,8 +1,5 @@
-package java.model;
+package spring.model;
 
-/**
- * Created by Damian Stępniak on 31.03.2017.
- */
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;

@@ -1,12 +1,15 @@
-package java.configuration;
+package spring.configuration;
 
 /**
- * Created by Damian Stępniak on 31.03.2017.
+ * Created by Damian Stępniak on 17.03.2017.
  */
+
+
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
@@ -24,7 +27,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({"java.configuration"})
+@ComponentScan({"spring.configuration"})
 @PropertySource(value = {"classpath:application.properties"})
 public class HibernateConfiguration {
 
@@ -35,7 +38,7 @@ public class HibernateConfiguration {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("java.model");
+        sessionFactory.setPackagesToScan("spring.model");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }

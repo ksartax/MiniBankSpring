@@ -24,14 +24,17 @@ public class User implements Serializable {
     @Column(unique = true)
     private int user_id;
 
-    @Column(name = "ADDRESS_USER_ID", nullable = true)
-    private Address_User address_user;
+    @OneToOne
+    @JoinColumn(name = "ADDRESS_USER_ID")
+    private Address_User address_user_id;
 
-    @Column(name = "CONTACT_USER_ID", nullable = true)
-    private Contact_User contact_user;
+    @OneToOne
+    @JoinColumn(name = "CONTACT_USER_ID")
+    private Contact_User contact_user_id;
 
-    @Column(name = "FINANCE_ACCOUNT_USER_ID", nullable = true)
-    private Finance_Account_User finance_account_user;
+    @OneToOne
+    @JoinColumn(name = "FINANCE_ACCOUNT_USER_ID")
+    private Finance_Account_User finance_account_user_id;
 
     @Column(name = "ADDRESS_IP", nullable = true, length = 100)
     private String address_ip;
@@ -66,31 +69,32 @@ public class User implements Serializable {
         this.user_id = user_id;
     }
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    public Address_User getAddress_user() {
-        return address_user;
+    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    public Address_User getAddress_user_id() {
+        return address_user_id;
     }
 
-    public void setAddress_user(Address_User address_user) {
-        this.address_user = address_user;
+    public void setAddress_user_id(Address_User address_user_id) {
+        this.address_user_id = address_user_id;
     }
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    public Contact_User getContact_user() {
-        return contact_user;
+    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    public Contact_User getContact_user_id() {
+        return contact_user_id;
     }
 
-    public void setContact_user(Contact_User contact_user) {
-        this.contact_user = contact_user;
+
+    public void setContact_user_id(Contact_User contact_user_id) {
+        this.contact_user_id = contact_user_id;
     }
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    public Finance_Account_User getFinance_account_user() {
-        return finance_account_user;
+    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    public Finance_Account_User getFinance_account_user_id() {
+        return finance_account_user_id;
     }
 
-    public void setFinance_account_user(Finance_Account_User finance_account_user) {
-        this.finance_account_user = finance_account_user;
+    public void setFinance_account_user_id(Finance_Account_User finance_account_user_id) {
+        this.finance_account_user_id = finance_account_user_id;
     }
 
     public String getAddress_ip() {

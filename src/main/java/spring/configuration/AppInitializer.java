@@ -23,7 +23,8 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
         return null;
     }
 
-    protected String[] getServletMappings() {
+    protected String[] getServletMappings()
+    {
         return new String[] {"/"};
     }
 }

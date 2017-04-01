@@ -23,4 +23,8 @@ public class UsersServiceImpl implements UsersService{
     public List<User> getAll() {
         return usersDao.getAll();
     }
+
+    public User add(User user) {
+        return usersDao.add(user);
+    }
 }

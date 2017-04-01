@@ -10,5 +10,5 @@ import java.util.List;
 public interface UsersService{
 
     public List<User> getAll();
-
+    public User add(User user);
 }

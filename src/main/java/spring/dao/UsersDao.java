@@ -10,5 +10,7 @@ import java.util.List;
 public interface UsersDao {
 
     public List<User> getAll();
+    public User add(User user);
+
 
 }

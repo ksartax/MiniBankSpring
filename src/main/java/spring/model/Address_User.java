@@ -30,10 +30,6 @@ public class Address_User implements Serializable{
     @Column(name = "HOME_NR", nullable = true, length = 100)
     private String home_nr;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user_id;
-
     public int getAddress_user_id() {
         return address_user_id;
     }
@@ -82,11 +78,5 @@ public class Address_User implements Serializable{
         this.home_nr = home_nr;
     }
 
-    public User getUser_id() {
-        return user_id;
-    }
 
-    public void setUser_id(User user_id) {
-        this.user_id = user_id;
-    }
 }

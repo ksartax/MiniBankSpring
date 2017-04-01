@@ -15,16 +15,20 @@ public class Finance_Account_User implements Serializable{
     @Column(unique = true)
     private int finance_account_user_id;
 
-    @Column(name = "DEPOSIT_INTO_ACCOUNT_ID")
+    @OneToMany
+    @JoinColumn(name = "DEPOSIT_INTO_ACCOUNT_ID")
     private Deposit_Into_Account deposit_into_account_id;
 
-    @Column(name = "FROM_BANK_ACCOUNT_TRANSACTION_ID")
+    @OneToMany
+    @JoinColumn(name = "FROM_BANK_ACCOUNT_TRANSACTION_ID")
     private From_Bank_Account_Transaction from_bank_account_transaction_id;
 
-    @Column(name = "REMOVE_INTO_ACCOUNT_ID")
+    @OneToMany
+    @JoinColumn(name = "REMOVE_INTO_ACCOUNT_ID")
     private Remove_Into_Account remove_into_account_id;
 
-    @Column(name = "TO_BANK_ACCOUNT_TRANSACTION_ID")
+    @OneToMany
+    @JoinColumn(name = "TO_BANK_ACCOUNT_TRANSACTION_ID")
     private To_Bank_Account_Transaction to_bank_account_transaction_id;
 
     @Column(name = "BANK_ACCOUNT_NUMBER", nullable = false, length = 100)
@@ -35,10 +39,6 @@ public class Finance_Account_User implements Serializable{
 
     @Column(name = "GRANDTOTAL", nullable = false)
     private float grandtotal;
-
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user_id;
 
     @Column(name = "PROTECT_CODE", nullable = true, length = 100)
     private String protect_code;
@@ -75,14 +75,6 @@ public class Finance_Account_User implements Serializable{
         this.grandtotal = grandtotal;
     }
 
-    public User getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(User user_id) {
-        this.user_id = user_id;
-    }
-
     public String getProtect_code() {
         return protect_code;
     }
@@ -90,7 +82,6 @@ public class Finance_Account_User implements Serializable{
     public void setProtect_code(String protect_code)
     {
         this.protect_code = protect_code;
-
     }
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)

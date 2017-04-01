@@ -1,10 +1,9 @@
 package spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import spring.model.User;
 import spring.service.UsersService;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.awt.*;
 import java.util.*;
@@ -14,15 +13,20 @@ import java.util.*;
  */
 
 @RestController
+@RequestMapping("api/user")
 public class AppController {
 
     @Autowired
     private UsersService usersService;
 
-    @GetMapping("/customers")
+    @PostMapping("/customers")
     public java.util.List<User> getUser(){
         return usersService.getAll();
     }
 
+    @PostMapping("/add")
+    public User save(@RequestBody User user){
+        return usersService.add(user);
+    }
 
 }

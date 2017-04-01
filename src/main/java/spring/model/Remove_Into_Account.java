@@ -24,7 +24,7 @@ public class Remove_Into_Account implements Serializable{
     @Column(name = "PRICE", nullable = false)
     private float price;
 
-    private Set<Finance_Account_User> finance_account_user_id = new HashSet<Finance_Account_User>();
+    private Finance_Account_User finance_account_user_id;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
@@ -46,11 +46,13 @@ public class Remove_Into_Account implements Serializable{
         this.price = price;
     }
 
-    public Set<Finance_Account_User> getFinance_account_user_id() {
+    @ManyToOne
+    @JoinColumn(name = "finance_account_user_id")
+    public Finance_Account_User getFinance_account_user_id() {
         return finance_account_user_id;
     }
 
-    public void setFinance_account_user_id(Set<Finance_Account_User> finance_account_user_id) {
+    public void setFinance_account_user_id(Finance_Account_User finance_account_user_id) {
         this.finance_account_user_id = finance_account_user_id;
     }
 

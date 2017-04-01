@@ -17,21 +17,21 @@ public class Finance_Account_User implements Serializable{
     @Column(unique = true)
     private int finance_account_user_id;
 
-    @ManyToOne
-    @JoinColumn(name = "DEPOSIT_INTO_ACCOUNT_ID")
-    private Deposit_Into_Account deposit_into_account_id ;
+    //@ManyToOne
+    //@JoinColumn(name = "DEPOSIT_INTO_ACCOUNT_ID")
+    private Set<Deposit_Into_Account> deposit_into_account_id ;
 
-    @ManyToOne
-    @JoinColumn(name = "FROM_BANK_ACCOUNT_TRANSACTION_ID")
-    private From_Bank_Account_Transaction from_bank_account_transaction_id;
+    //@ManyToOne
+    //@JoinColumn(name = "FROM_BANK_ACCOUNT_TRANSACTION_ID")
+    private Set<From_Bank_Account_Transaction> from_bank_account_transaction_id;
 
-    @ManyToOne
-    @JoinColumn(name = "REMOVE_INTO_ACCOUNT_ID")
-    private Remove_Into_Account remove_into_account_id;
+    //@ManyToOne
+    //@JoinColumn(name = "REMOVE_INTO_ACCOUNT_ID")
+    private Set<Remove_Into_Account> remove_into_account_id;
 
-    @ManyToOne
-    @JoinColumn(name = "TO_BANK_ACCOUNT_TRANSACTION_ID")
-    private To_Bank_Account_Transaction to_bank_account_transaction_id;
+    //@ManyToOne
+    //@JoinColumn(name = "TO_BANK_ACCOUNT_TRANSACTION_ID")
+    private Set<To_Bank_Account_Transaction> to_bank_account_transaction_id;
 
     @Column(name = "BANK_ACCOUNT_NUMBER", nullable = false, length = 100)
     private String bank_account_number;
@@ -86,39 +86,39 @@ public class Finance_Account_User implements Serializable{
         this.protect_code = protect_code;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    public Deposit_Into_Account getDeposit_into_account_id() {
+    @OneToMany(mappedBy = "financeAccountUser",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    public Set<Deposit_Into_Account> getDeposit_into_account_id() {
         return deposit_into_account_id;
     }
 
-    public void setDeposit_into_account_id(Deposit_Into_Account deposit_into_account_id) {
+    public void setDeposit_into_account_id(Set<Deposit_Into_Account> deposit_into_account_id) {
         this.deposit_into_account_id = deposit_into_account_id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    public From_Bank_Account_Transaction getFrom_bank_account_transaction_id() {
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "financeAccountUser", cascade = CascadeType.ALL)
+    public Set<From_Bank_Account_Transaction> getFrom_bank_account_transaction_id() {
         return from_bank_account_transaction_id;
     }
 
-    public void setFrom_bank_account_transaction_id(From_Bank_Account_Transaction from_bank_account_transaction_id) {
+    public void setFrom_bank_account_transaction_id(Set<From_Bank_Account_Transaction> from_bank_account_transaction_id) {
         this.from_bank_account_transaction_id = from_bank_account_transaction_id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    public Remove_Into_Account getRemove_into_account_id() {
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "financeAccountUser", cascade = CascadeType.ALL)
+    public Set<Remove_Into_Account> getRemove_into_account_id() {
         return remove_into_account_id;
     }
 
-    public void setRemove_into_account_id(Remove_Into_Account remove_into_account_id) {
+    public void setRemove_into_account_id(Set<Remove_Into_Account> remove_into_account_id) {
         this.remove_into_account_id = remove_into_account_id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    public To_Bank_Account_Transaction getTo_bank_account_transaction_id() {
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "financeAccountUser", cascade = CascadeType.ALL)
+    public Set<To_Bank_Account_Transaction> getTo_bank_account_transaction_id() {
         return to_bank_account_transaction_id;
     }
 
-    public void setTo_bank_account_transaction_id(To_Bank_Account_Transaction to_bank_account_transaction_id) {
+    public void setTo_bank_account_transaction_id(Set<To_Bank_Account_Transaction> to_bank_account_transaction_id) {
         this.to_bank_account_transaction_id = to_bank_account_transaction_id;
     }
 }

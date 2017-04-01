@@ -16,12 +16,28 @@ import static javax.swing.text.StyleConstants.Size;
  * Created by Damian Stępniak on 17.03.2017.
  */
 @Entity
+@Table(name = "user")
 public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true)
     private int user_id;
+
+    @Id
+    @Column(name = "ADDRESS_USER_ID", nullable = true)
+    private int address_user_id;
+
+    @Id
+    @Column(name = "CONTACT_USER_ID", nullable = true)
+    private int contact_user_id;
+
+    @Id
+    @Column(name = "FINANCE_ACCOUNT_USER_ID", nullable = true)
+    private int finance_account_user_id;
+
+    @Column(name = "ADDRESS_IP", nullable = true, length = 100)
+    private String address_ip;
 
     @Column(name = "FIRST_NAME", nullable = true, length = 100)
     private String firstName;
@@ -35,24 +51,113 @@ public class User implements Serializable {
     @Column(name = "EMAIL", nullable = true, length = 100)
     private String email;
 
-    @Column(name = "ADDRESS_USER_ID", nullable = true)
-    private int address_user_id;
-
-    @Column(name = "CONTACT_USER_ID", nullable = true)
-    private int contact_user_id;
-
-    @Column(name = "FINANCE_ACCOUNT_USER_ID", nullable = true)
-    private int finance_account_user_id;
-
     @Column(name = "PROTECT_CODE", nullable = true, length = 100)
     private String protect_code;
 
-    @Column(name = "ADDRESS_IP", nullable = true, length = 100)
-    private String address_ip;
+    @Column(name = "ACTIVE", nullable = false)
+    private int active;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate joiningData;
 
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+    public int getAddress_user_id() {
+        return address_user_id;
+    }
+
+    public void setAddress_user_id(int address_user_id) {
+        this.address_user_id = address_user_id;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+    public int getContact_user_id() {
+        return contact_user_id;
+    }
+
+    public void setContact_user_id(int contact_user_id) {
+        this.contact_user_id = contact_user_id;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+    public int getFinance_account_user_id() {
+        return finance_account_user_id;
+    }
+
+    public void setFinance_account_user_id(int finance_account_user_id) {
+        this.finance_account_user_id = finance_account_user_id;
+    }
+
+    public String getAddress_ip() {
+        return address_ip;
+    }
+
+    public void setAddress_ip(String address_ip) {
+        this.address_ip = address_ip;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getProtect_code() {
+        return protect_code;
+    }
+
+    public void setProtect_code(String protect_code) {
+        this.protect_code = protect_code;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
+    public LocalDate getJoiningData() {
+        return joiningData;
+    }
+
+    public void setJoiningData(LocalDate joiningData) {
+        this.joiningData = joiningData;
+    }
 }
 

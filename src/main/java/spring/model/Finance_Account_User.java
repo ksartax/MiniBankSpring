@@ -23,10 +23,11 @@ public class Finance_Account_User implements Serializable{
     @Column(name = "GRANDTOTAL", nullable = false)
     private float grandtotal;
 
-    @Column(name = "BANK_ACCOUNT_TRANSACTION_ID", nullable = false)
-    private int bank_account_transaction_id;
-
+    @Id
     @Column(name = "USER_ID", nullable = false)
     private int user_id;
+
+    @Column(name = "PROTECT_CODE", nullable = true, length = 100)
+    private String protect_code;
 
 }

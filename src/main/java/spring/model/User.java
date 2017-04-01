@@ -1,7 +1,9 @@
 package spring.model;
 
+import com.sun.istack.internal.NotNull;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
+import org.omg.CosNaming.NamingContextPackage.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -19,59 +21,38 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true)
-    private int id_user;
+    private int user_id;
 
-    @Column(nullable = true)
+    @Column(name = "FIRST_NAME", nullable = true, length = 100)
     private String firstName;
 
-    @Column(nullable = true)
+    @Column(name = "LAST-NAME", nullable = true, length = 100)
     private String lastName;
+
+    @Column(name = "PASSWORD", nullable = false, length = 250)
+    private String password;
+
+    @Column(name = "EMAIL", nullable = false, length = 100)
+    private String email;
+
+    @Column(name = "ADDRESS_USER_ID", nullable = true)
+    private int address_user_id;
+
+    @Column(name = "CONTACT_USER_ID", nullable = true)
+    private int contact_user_id;
+
+    @Column(name = "FINANCE_ACCOUNT_USER_ID", nullable = true)
+    private int finance_account_user_id;
+
+    @Column(name = "PROTECT_CODE", nullable = false)
+    private String protect_code;
+
+    @Column(name = "ADDRESS_IP", nullable = false)
+    private String address_ip;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate joiningData;
-
-    public int getId_user() {
-        return id_user;
-    }
-
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public LocalDate getJoiningData() {
-        return joiningData;
-    }
-
-    public void setJoiningData(LocalDate joiningData) {
-        this.joiningData = joiningData;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id_user=" + id_user +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", joiningData=" + joiningData +
-                '}';
-    }
 
 
 }

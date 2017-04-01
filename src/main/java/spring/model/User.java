@@ -26,13 +26,13 @@ public class User implements Serializable {
     @Column(name = "FIRST_NAME", nullable = true, length = 100)
     private String firstName;
 
-    @Column(name = "LAST-NAME", nullable = true, length = 100)
+    @Column(name = "LAST_NAME", nullable = true, length = 100)
     private String lastName;
 
-    @Column(name = "PASSWORD", nullable = false, length = 250)
+    @Column(name = "PASSWORD", nullable = true, length = 250)
     private String password;
 
-    @Column(name = "EMAIL", nullable = false, length = 100)
+    @Column(name = "EMAIL", nullable = true, length = 100)
     private String email;
 
     @Column(name = "ADDRESS_USER_ID", nullable = true)
@@ -44,16 +44,15 @@ public class User implements Serializable {
     @Column(name = "FINANCE_ACCOUNT_USER_ID", nullable = true)
     private int finance_account_user_id;
 
-    @Column(name = "PROTECT_CODE", nullable = false)
+    @Column(name = "PROTECT_CODE", nullable = true, length = 100)
     private String protect_code;
 
-    @Column(name = "ADDRESS_IP", nullable = false)
+    @Column(name = "ADDRESS_IP", nullable = true, length = 100)
     private String address_ip;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate joiningData;
-
 
 }
 

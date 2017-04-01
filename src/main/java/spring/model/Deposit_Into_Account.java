@@ -5,21 +5,17 @@ import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * Created by Damian Stępniak on 01.04.2017.
  */
 @Entity
-public class To_Bank_Account_Transaction implements Serializable{
+public class Deposit_Into_Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true)
-    private int to_bank_account_transaction_id;
-
-    @Column(name = "FROM_FINANCE_ACCOUNT_USER_ID", nullable = false)
-    private int from_finance_account_user_id;
+    private int deposit_into_account_id ;
 
     @Column(name = "PRICE", nullable = false)
     private float price;
@@ -30,5 +26,4 @@ public class To_Bank_Account_Transaction implements Serializable{
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate joiningData;
-
 }

@@ -1,5 +1,9 @@
 package spring.model;
 
+import org.hibernate.annotations.Type;
+import org.joda.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -24,4 +28,7 @@ public class From_Bank_Account_Transaction implements Serializable{
     @Column(name = "FINANCE_ACCOUNT_USER_ID", nullable = false)
     private int finance_account_user_id;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    private LocalDate joiningData;
 }

@@ -12,6 +12,7 @@ import java.io.Serializable;
  */
 
 @Entity
+@Table(name = "from_bank_account_transaction")
 public class From_Bank_Account_Transaction implements Serializable{
 
     @Id
@@ -21,56 +22,18 @@ public class From_Bank_Account_Transaction implements Serializable{
 
     @Id
     @Column(name = "TO_FINANCE_ACCOUNT_USER_ID", nullable = false)
-    private int to_finance_account_user_id;
+    private Finance_Account_User to_finance_account_user_id;
 
     @Column(name = "PRICE", nullable = false)
     private float price;
 
     @Id
     @Column(name = "FINANCE_ACCOUNT_USER_ID", nullable = false)
-    private int finance_account_user_id;
+    private Finance_Account_User finance_account_user_id;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate joiningData;
 
-    public int getFrom_bank_account_transaction_id() {
-        return from_bank_account_transaction_id;
-    }
 
-    public void setFrom_bank_account_transaction_id(int from_bank_account_transaction_id) {
-        this.from_bank_account_transaction_id = from_bank_account_transaction_id;
-    }
-
-    public int getTo_finance_account_user_id() {
-        return to_finance_account_user_id;
-    }
-
-    public void setTo_finance_account_user_id(int to_finance_account_user_id) {
-        this.to_finance_account_user_id = to_finance_account_user_id;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public int getFinance_account_user_id() {
-        return finance_account_user_id;
-    }
-
-    public void setFinance_account_user_id(int finance_account_user_id) {
-        this.finance_account_user_id = finance_account_user_id;
-    }
-
-    public LocalDate getJoiningData() {
-        return joiningData;
-    }
-
-    public void setJoiningData(LocalDate joiningData) {
-        this.joiningData = joiningData;
-    }
 }

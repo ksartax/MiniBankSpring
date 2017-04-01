@@ -26,15 +26,18 @@ public class User implements Serializable {
 
     @Id
     @Column(name = "ADDRESS_USER_ID", nullable = true)
-    private int address_user_id;
+   // @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private Address_User address_user;
 
     @Id
     @Column(name = "CONTACT_USER_ID", nullable = true)
-    private int contact_user_id;
+    //@OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private Contact_User contact_user;
 
     @Id
     @Column(name = "FINANCE_ACCOUNT_USER_ID", nullable = true)
-    private int finance_account_user_id;
+    //@OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private Finance_Account_User finance_account_user;
 
     @Column(name = "ADDRESS_IP", nullable = true, length = 100)
     private String address_ip;
@@ -69,31 +72,29 @@ public class User implements Serializable {
         this.user_id = user_id;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
-    public int getAddress_user_id() {
-        return address_user_id;
+
+    public Address_User getAddress_user() {
+        return address_user;
     }
 
-    public void setAddress_user_id(int address_user_id) {
-        this.address_user_id = address_user_id;
+    public void setAddress_user(Address_User address_user) {
+        this.address_user = address_user;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
-    public int getContact_user_id() {
-        return contact_user_id;
+    public Contact_User getContact_user() {
+        return contact_user;
     }
 
-    public void setContact_user_id(int contact_user_id) {
-        this.contact_user_id = contact_user_id;
+    public void setContact_user(Contact_User contact_user) {
+        this.contact_user = contact_user;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
-    public int getFinance_account_user_id() {
-        return finance_account_user_id;
+    public Finance_Account_User getFinance_account_user() {
+        return finance_account_user;
     }
 
-    public void setFinance_account_user_id(int finance_account_user_id) {
-        this.finance_account_user_id = finance_account_user_id;
+    public void setFinance_account_user(Finance_Account_User finance_account_user) {
+        this.finance_account_user = finance_account_user;
     }
 
     public String getAddress_ip() {

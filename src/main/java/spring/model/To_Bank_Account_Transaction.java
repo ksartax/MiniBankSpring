@@ -6,6 +6,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Damian Stępniak on 01.04.2017.
@@ -25,9 +27,7 @@ public class To_Bank_Account_Transaction implements Serializable{
     @Column(name = "PRICE", nullable = false)
     private float price;
 
-    @ManyToOne
-    @JoinColumn(name = "finance_account_user_id")
-    private Finance_Account_User finance_account_user_id;
+    private Set<Finance_Account_User> finance_account_user_id = new HashSet<Finance_Account_User>();
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
@@ -57,11 +57,11 @@ public class To_Bank_Account_Transaction implements Serializable{
         this.price = price;
     }
 
-    public Finance_Account_User getFinance_account_user_id() {
+    public Set<Finance_Account_User> getFinance_account_user_id() {
         return finance_account_user_id;
     }
 
-    public void setFinance_account_user_id(Finance_Account_User finance_account_user_id) {
+    public void setFinance_account_user_id(Set<Finance_Account_User> finance_account_user_id) {
         this.finance_account_user_id = finance_account_user_id;
     }
 

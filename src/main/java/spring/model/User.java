@@ -24,19 +24,13 @@ public class User implements Serializable {
     @Column(unique = true)
     private int user_id;
 
-    @Id
     @Column(name = "ADDRESS_USER_ID", nullable = true)
-   // @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private Address_User address_user;
 
-    @Id
     @Column(name = "CONTACT_USER_ID", nullable = true)
-    //@OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private Contact_User contact_user;
 
-    @Id
     @Column(name = "FINANCE_ACCOUNT_USER_ID", nullable = true)
-    //@OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private Finance_Account_User finance_account_user;
 
     @Column(name = "ADDRESS_IP", nullable = true, length = 100)
@@ -72,7 +66,7 @@ public class User implements Serializable {
         this.user_id = user_id;
     }
 
-
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     public Address_User getAddress_user() {
         return address_user;
     }
@@ -81,6 +75,7 @@ public class User implements Serializable {
         this.address_user = address_user;
     }
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     public Contact_User getContact_user() {
         return contact_user;
     }
@@ -89,6 +84,7 @@ public class User implements Serializable {
         this.contact_user = contact_user;
     }
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     public Finance_Account_User getFinance_account_user() {
         return finance_account_user;
     }

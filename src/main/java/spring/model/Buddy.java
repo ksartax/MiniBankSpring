@@ -23,5 +23,27 @@ public class Buddy implements Serializable{
     @Column(name = "USER_ID", nullable = false)
     private User user_id;
 
+    public int getBuddy_id() {
+        return buddy_id;
+    }
 
+    public void setBuddy_id(int buddy_id) {
+        this.buddy_id = buddy_id;
+    }
+
+    public User getEnemy_user_id() {
+        return enemy_user_id;
+    }
+
+    public void setEnemy_user_id(User enemy_user_id) {
+        this.enemy_user_id = enemy_user_id;
+    }
+
+    public User getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(User user_id) {
+        this.user_id = user_id;
+    }
 }

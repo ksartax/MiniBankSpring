@@ -25,8 +25,8 @@ public class To_Bank_Account_Transaction implements Serializable{
     @Column(name = "PRICE", nullable = false)
     private float price;
 
-    @Id
-    @Column(name = "FINANCE_ACCOUNT_USER_ID", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "finance_account_user_id")
     private Finance_Account_User finance_account_user_id;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")

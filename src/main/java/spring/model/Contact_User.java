@@ -18,8 +18,8 @@ public class Contact_User implements Serializable{
     @Column(name = "TELEPHONE", nullable = true)
     private int telephone;
 
-    @Id
-    @Column(name = "USER_ID", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "user_id")
     private User user_id;
 
     public int getContact_user_id() {

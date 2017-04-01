@@ -15,12 +15,11 @@ public class Buddy implements Serializable{
     @Column(unique = true)
     private int buddy_id;
 
-    @Id
     @Column(name = "ENEMY_USER_ID", nullable = false, length = 100)
     private User enemy_user_id;
 
-    @Id
-    @Column(name = "USER_ID", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "user_id")
     private User user_id;
 
     public int getBuddy_id() {
@@ -31,6 +30,7 @@ public class Buddy implements Serializable{
         this.buddy_id = buddy_id;
     }
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     public User getEnemy_user_id() {
         return enemy_user_id;
     }
@@ -38,6 +38,7 @@ public class Buddy implements Serializable{
     public void setEnemy_user_id(User enemy_user_id) {
         this.enemy_user_id = enemy_user_id;
     }
+
 
     public User getUser_id() {
         return user_id;

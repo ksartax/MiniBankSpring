@@ -20,15 +20,14 @@ public class From_Bank_Account_Transaction implements Serializable{
     @Column(unique = true)
     private int from_bank_account_transaction_id;
 
-    @Id
     @Column(name = "TO_FINANCE_ACCOUNT_USER_ID", nullable = false)
     private Finance_Account_User to_finance_account_user_id;
 
     @Column(name = "PRICE", nullable = false)
     private float price;
 
-    @Id
-    @Column(name = "FINANCE_ACCOUNT_USER_ID", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "finance_account_user_id")
     private Finance_Account_User finance_account_user_id;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")

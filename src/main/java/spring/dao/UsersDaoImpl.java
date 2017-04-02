@@ -22,9 +22,6 @@ public class UsersDaoImpl extends AbstractDao<Integer, User> implements UsersDao
     }
 
     public User add(User user) {
-        //ObjectMapper mapper = new ObjectMapper();
-        //JsonNode node = mapper.readTree(str);
-        //User theUser = mapper.convertValue(node.get("user"), User.class);
         getSession().persist(user);
       return user;
     }

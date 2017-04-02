@@ -2,11 +2,13 @@ package spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import spring.logic.ConvertValue;
 import spring.model.Address_User;
 import spring.model.User;
 import spring.service.UsersService;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -14,20 +16,9 @@ import java.util.*;
  */
 
 @RestController
-@RequestMapping("api/user")
+@RequestMapping("api")
 public class AppController {
 
-    @Autowired
-    private UsersService usersService;
 
-    @PostMapping("/customers")
-    public java.util.List<User> getUser(){
-        return usersService.getAll();
-    }
-
-    @PostMapping("/add")
-    public String save(@RequestBody String string){
-        return string;
-    }
 
 }

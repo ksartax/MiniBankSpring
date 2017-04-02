@@ -2,6 +2,7 @@ package spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import spring.model.Address_User;
 import spring.model.User;
 import spring.service.UsersService;
 
@@ -25,8 +26,8 @@ public class AppController {
     }
 
     @PostMapping("/add")
-    public User save(@RequestBody User user){
-        return usersService.add(user);
+    public String save(@RequestBody String string){
+        return string;
     }
 
 }

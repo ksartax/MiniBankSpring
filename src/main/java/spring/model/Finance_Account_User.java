@@ -86,7 +86,7 @@ public class Finance_Account_User implements Serializable{
         this.protect_code = protect_code;
     }
 
-
+    @ManyToOne(targetEntity = To_Bank_Account_Transaction.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Set<Deposit_Into_Account> getDeposit_into_account_id() {
         return deposit_into_account_id;
     }
@@ -94,7 +94,7 @@ public class Finance_Account_User implements Serializable{
     public void setDeposit_into_account_id(Set<Deposit_Into_Account> deposit_into_account_id) {
         this.deposit_into_account_id = deposit_into_account_id;
     }
-
+    @ManyToOne(targetEntity = To_Bank_Account_Transaction.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Set<From_Bank_Account_Transaction> getFrom_bank_account_transaction_id() {
         return from_bank_account_transaction_id;
     }
@@ -103,7 +103,7 @@ public class Finance_Account_User implements Serializable{
         this.from_bank_account_transaction_id = from_bank_account_transaction_id;
     }
 
-
+    @ManyToOne(targetEntity = To_Bank_Account_Transaction.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Set<Remove_Into_Account> getRemove_into_account_id() {
         return remove_into_account_id;
     }
@@ -112,7 +112,7 @@ public class Finance_Account_User implements Serializable{
         this.remove_into_account_id = remove_into_account_id;
     }
 
-
+    @ManyToOne(targetEntity = To_Bank_Account_Transaction.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Set<To_Bank_Account_Transaction> getTo_bank_account_transaction_id() {
         return to_bank_account_transaction_id;
     }

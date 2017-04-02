@@ -24,6 +24,8 @@ public class Remove_Into_Account implements Serializable{
     @Column(name = "PRICE", nullable = false)
     private float price;
 
+    @ManyToOne
+    @JoinColumn(name = "finance_account_user_id")
     private Finance_Account_User finance_account_user_id;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -46,8 +48,7 @@ public class Remove_Into_Account implements Serializable{
         this.price = price;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "finance_account_user_id")
+
     public Finance_Account_User getFinance_account_user_id() {
         return finance_account_user_id;
     }

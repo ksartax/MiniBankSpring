@@ -1,5 +1,11 @@
 package spring.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -14,23 +20,19 @@ public class Finance_Account_User implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true)
+    @Column(name = "finance_account_user_id",unique = true)
     private int finance_account_user_id;
 
-    @ManyToOne(targetEntity = Deposit_Into_Account.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "DEPOSIT_INTO_ACCOUNT_ID")
+    @OneToMany
     private Set<Deposit_Into_Account> deposit_into_account_id ;
 
-    @ManyToOne(targetEntity = From_Bank_Account_Transaction.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL )
-    @JoinColumn(name = "FROM_BANK_ACCOUNT_TRANSACTION_ID")
+    @OneToMany
     private Set<From_Bank_Account_Transaction> from_bank_account_transaction_id;
 
-    @ManyToOne(targetEntity = Remove_Into_Account.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "REMOVE_INTO_ACCOUNT_ID")
-    private Set<Remove_Into_Account> remove_into_account_id;
+    @OneToMany
+    private Set<Remove_Into_Account> remove_into_account = new HashSet<Remove_Into_Account>();
 
-    @ManyToOne(targetEntity = To_Bank_Account_Transaction.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "TO_BANK_ACCOUNT_TRANSACTION_ID")
+    @OneToMany
     private Set<To_Bank_Account_Transaction> to_bank_account_transaction_id;
 
     @Column(name = "BANK_ACCOUNT_NUMBER", nullable = false, length = 100)
@@ -86,7 +88,6 @@ public class Finance_Account_User implements Serializable{
         this.protect_code = protect_code;
     }
 
-    @ManyToOne(targetEntity = To_Bank_Account_Transaction.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Set<Deposit_Into_Account> getDeposit_into_account_id() {
         return deposit_into_account_id;
     }
@@ -94,7 +95,7 @@ public class Finance_Account_User implements Serializable{
     public void setDeposit_into_account_id(Set<Deposit_Into_Account> deposit_into_account_id) {
         this.deposit_into_account_id = deposit_into_account_id;
     }
-    @ManyToOne(targetEntity = To_Bank_Account_Transaction.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
     public Set<From_Bank_Account_Transaction> getFrom_bank_account_transaction_id() {
         return from_bank_account_transaction_id;
     }
@@ -103,21 +104,43 @@ public class Finance_Account_User implements Serializable{
         this.from_bank_account_transaction_id = from_bank_account_transaction_id;
     }
 
-    @ManyToOne(targetEntity = To_Bank_Account_Transaction.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    public Set<Remove_Into_Account> getRemove_into_account_id() {
-        return remove_into_account_id;
-    }
 
-    public void setRemove_into_account_id(Set<Remove_Into_Account> remove_into_account_id) {
-        this.remove_into_account_id = remove_into_account_id;
-    }
-
-    @ManyToOne(targetEntity = To_Bank_Account_Transaction.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Set<To_Bank_Account_Transaction> getTo_bank_account_transaction_id() {
         return to_bank_account_transaction_id;
     }
 
     public void setTo_bank_account_transaction_id(Set<To_Bank_Account_Transaction> to_bank_account_transaction_id) {
         this.to_bank_account_transaction_id = to_bank_account_transaction_id;
+   }
+
+    public void addMoney(float money){
+        this.subtotal += money;
+    }
+
+    public void subMoney(float money){
+        this.subtotal -= money;
+    }
+
+    public Set<Remove_Into_Account> getRemove_into_account() {
+        return remove_into_account;
+    }
+
+    public void setRemove_into_account(Set<Remove_Into_Account> remove_into_account) {
+        this.remove_into_account = remove_into_account;
+    }
+
+    @Override
+    public String toString() {
+        return "Finance_Account_User{" +
+                "finance_account_user_id=" + finance_account_user_id +
+                ", deposit_into_account_id=" + deposit_into_account_id +
+                ", from_bank_account_transaction_id=" + from_bank_account_transaction_id +
+                ", remove_into_account_id=" + remove_into_account +
+                ", to_bank_account_transaction_id=" + to_bank_account_transaction_id +
+                ", bank_account_number='" + bank_account_number + '\'' +
+                ", subtotal=" + subtotal +
+                ", grandtotal=" + grandtotal +
+                ", protect_code='" + protect_code + '\'' +
+                '}';
     }
 }

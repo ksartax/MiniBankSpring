@@ -20,10 +20,13 @@ public class ConvertValue<T> {
         node = mapper.readTree(json);
     }
 
-    public T convertToObject(T object, String jsonElement)
+    public JsonNode getNode(){
+        return node;
+    }
+
+    public T convertToObject(String jsonElement) throws IllegalArgumentException
     {
-        object = mapper.convertValue(node.get(jsonElement), typeParameterClass);
-        return object;
+        return mapper.convertValue(node.get(jsonElement), typeParameterClass);
     }
 
 }

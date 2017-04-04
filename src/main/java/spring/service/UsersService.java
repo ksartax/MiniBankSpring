@@ -11,4 +11,5 @@ public interface UsersService{
 
     public List<User> getAll();
     public User add(User user);
+    public User findByPasswordAndEmail(String password, String email) throws Exception;
 }

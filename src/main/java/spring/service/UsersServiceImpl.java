@@ -2,6 +2,7 @@ package spring.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import spring.dao.UsersDao;
 import spring.model.User;
@@ -26,5 +27,9 @@ public class UsersServiceImpl implements UsersService{
 
     public User add(User user) {
         return usersDao.add(user);
+    }
+
+    public User findByPasswordAndEmail(String password, String email) throws Exception {
+        return usersDao.findByPasswordAndEmail(password, email);
     }
 }

@@ -1,5 +1,7 @@
 package spring.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -18,19 +20,29 @@ public class Remove_Into_Account implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true)
+    @Column(name = "remove_into_account_id", unique = true)
     private int remove_into_account_id ;
 
     @Column(name = "PRICE", nullable = false)
     private float price;
 
-    @ManyToOne
-    @JoinColumn(name = "finance_account_user_id")
-    private Finance_Account_User finance_account_user_id;
-
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    @Column(name = "create_data", nullable = false)
     private LocalDate joiningData;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "finance_account_user")
+    private Finance_Account_User finance_account_user;
+
+    public Finance_Account_User getFinance_account_user() {
+        return finance_account_user;
+    }
+
+    public void setFinance_account_user(Finance_Account_User finance_account_user) {
+        this.finance_account_user = finance_account_user;
+    }
 
     public int getRemove_into_account_id() {
         return remove_into_account_id;
@@ -46,15 +58,6 @@ public class Remove_Into_Account implements Serializable{
 
     public void setPrice(float price) {
         this.price = price;
-    }
-
-
-    public Finance_Account_User getFinance_account_user_id() {
-        return finance_account_user_id;
-    }
-
-    public void setFinance_account_user_id(Finance_Account_User finance_account_user_id) {
-        this.finance_account_user_id = finance_account_user_id;
     }
 
     public LocalDate getJoiningData() {

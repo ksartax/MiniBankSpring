@@ -1,5 +1,6 @@
 package spring.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.internal.NotNull;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
@@ -39,16 +40,16 @@ public class User implements Serializable {
     @Column(name = "ADDRESS_IP", nullable = true, length = 100)
     private String address_ip;
 
-    @Column(name = "FIRST_NAME", nullable = true, length = 100)
+    @Column(name = "FIRST_NAME", nullable = false, length = 100)
     private String firstName;
 
-    @Column(name = "LAST_NAME", nullable = true, length = 100)
+    @Column(name = "LAST_NAME", nullable = false, length = 100)
     private String lastName;
 
-    @Column(name = "PASSWORD", nullable = true, length = 250)
+    @Column(name = "PASSWORD", nullable = false, length = 100)
     private String password;
 
-    @Column(name = "EMAIL", nullable = true, length = 100)
+    @Column(name = "EMAIL", nullable = false, length = 100)
     private String email;
 
     @Column(name = "PROTECT_CODE", nullable = true, length = 100)
@@ -69,7 +70,6 @@ public class User implements Serializable {
         this.user_id = user_id;
     }
 
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     public Address_User getAddress_user_id() {
         return address_user_id;
     }
@@ -78,17 +78,14 @@ public class User implements Serializable {
         this.address_user_id = address_user_id;
     }
 
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     public Contact_User getContact_user_id() {
         return contact_user_id;
     }
-
 
     public void setContact_user_id(Contact_User contact_user_id) {
         this.contact_user_id = contact_user_id;
     }
 
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     public Finance_Account_User getFinance_account_user_id() {
         return finance_account_user_id;
     }
@@ -159,6 +156,24 @@ public class User implements Serializable {
 
     public void setJoiningData(LocalDate joiningData) {
         this.joiningData = joiningData;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id=" + user_id +
+                ", address_user_id=" + address_user_id +
+                ", contact_user_id=" + contact_user_id +
+                ", finance_account_user_id=" + finance_account_user_id +
+                ", address_ip='" + address_ip + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", protect_code='" + protect_code + '\'' +
+                ", active=" + active +
+                ", joiningData=" + joiningData +
+                '}';
     }
 }
 

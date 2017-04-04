@@ -31,6 +31,7 @@ public class Deposit_Into_Account implements Serializable{
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    @Column(name = "create_data", nullable = false)
     private LocalDate joiningData;
 
     public int getDeposit_into_account_id() {

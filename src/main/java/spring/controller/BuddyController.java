@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("/api/buddy")
+@RequestMapping("/api/user/buddy")
 public class BuddyController {
 
     @PostMapping("/list")

@@ -10,6 +10,7 @@
     <packaging>war</packaging>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jackson.version>2.7.5</jackson.version>
         <springframework.version>4.3.1.RELEASE</springframework.version>
         <hibernate.version>4.3.6.Final</hibernate.version>
@@ -19,6 +20,7 @@
         <mockito.version>1.10.19</mockito.version>
         <h2.version>1.4.187</h2.version>
         <dbunit.version>2.2</dbunit.version>
+        <springsecurity.version>4.1.1.RELEASE</springsecurity.version>
     </properties>
 
     <dependencies>
@@ -103,6 +105,33 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160810</version>
+        </dependency>
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.10</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-hibernate4</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
     </dependencies>
     <build>

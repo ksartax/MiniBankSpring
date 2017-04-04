@@ -33,6 +33,7 @@ public class To_Bank_Account_Transaction implements Serializable{
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    @Column(name = "create_data")
     private LocalDate joiningData;
 
     public int getTo_bank_account_transaction_id() {

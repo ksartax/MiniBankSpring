@@ -1,5 +1,6 @@
 package spring.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -21,7 +22,8 @@ public class To_Bank_Account_Transaction implements Serializable{
     @Column(unique = true)
     private int to_bank_account_transaction_id;
 
-    @Column(name = "FROM_FINANCE_ACCOUNT_USER_ID", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "from_finance_account_user_id")
     private Finance_Account_User from_finance_account_user_id;
 
     @Column(name = "PRICE", nullable = false)
@@ -29,6 +31,7 @@ public class To_Bank_Account_Transaction implements Serializable{
 
     @ManyToOne
     @JoinColumn(name = "finance_account_user_id")
+    @JsonIgnore
     private Finance_Account_User finance_account_user_id;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")

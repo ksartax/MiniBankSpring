@@ -32,8 +32,8 @@ public class Remove_Into_Account implements Serializable{
     private LocalDate joiningData;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "finance_account_user")
+    @JsonIgnore
     private Finance_Account_User finance_account_user;
 
     public Finance_Account_User getFinance_account_user() {

@@ -24,16 +24,16 @@ public class Finance_Account_User implements Serializable{
     private int finance_account_user_id;
 
     @OneToMany
-    private Set<Deposit_Into_Account> deposit_into_account_id ;
+    private Set<Deposit_Into_Account> deposit_into_account = new HashSet<Deposit_Into_Account>();
 
     @OneToMany
-    private Set<From_Bank_Account_Transaction> from_bank_account_transaction_id;
+    private Set<From_Bank_Account_Transaction> from_bank_account_transaction = new HashSet<From_Bank_Account_Transaction>();
 
     @OneToMany
     private Set<Remove_Into_Account> remove_into_account = new HashSet<Remove_Into_Account>();
 
     @OneToMany
-    private Set<To_Bank_Account_Transaction> to_bank_account_transaction_id;
+    private Set<To_Bank_Account_Transaction> to_bank_account_transaction = new HashSet<To_Bank_Account_Transaction>();
 
     @Column(name = "BANK_ACCOUNT_NUMBER", nullable = false, length = 100)
     private String bank_account_number;
@@ -53,6 +53,38 @@ public class Finance_Account_User implements Serializable{
 
     public void setFinance_account_user_id(int finance_account_user_id) {
         this.finance_account_user_id = finance_account_user_id;
+    }
+
+    public Set<Deposit_Into_Account> getDeposit_into_account() {
+        return deposit_into_account;
+    }
+
+    public void setDeposit_into_account(Set<Deposit_Into_Account> deposit_into_account) {
+        this.deposit_into_account = deposit_into_account;
+    }
+
+    public Set<From_Bank_Account_Transaction> getFrom_bank_account_transaction() {
+        return from_bank_account_transaction;
+    }
+
+    public void setFrom_bank_account_transaction(Set<From_Bank_Account_Transaction> from_bank_account_transaction) {
+        this.from_bank_account_transaction = from_bank_account_transaction;
+    }
+
+    public Set<Remove_Into_Account> getRemove_into_account() {
+        return remove_into_account;
+    }
+
+    public void setRemove_into_account(Set<Remove_Into_Account> remove_into_account) {
+        this.remove_into_account = remove_into_account;
+    }
+
+    public Set<To_Bank_Account_Transaction> getTo_bank_account_transaction() {
+        return to_bank_account_transaction;
+    }
+
+    public void setTo_bank_account_transaction(Set<To_Bank_Account_Transaction> to_bank_account_transaction) {
+        this.to_bank_account_transaction = to_bank_account_transaction;
     }
 
     public String getBank_account_number() {
@@ -83,64 +115,9 @@ public class Finance_Account_User implements Serializable{
         return protect_code;
     }
 
-    public void setProtect_code(String protect_code)
-    {
+    public void setProtect_code(String protect_code) {
         this.protect_code = protect_code;
     }
 
-    public Set<Deposit_Into_Account> getDeposit_into_account_id() {
-        return deposit_into_account_id;
-    }
 
-    public void setDeposit_into_account_id(Set<Deposit_Into_Account> deposit_into_account_id) {
-        this.deposit_into_account_id = deposit_into_account_id;
-    }
-
-    public Set<From_Bank_Account_Transaction> getFrom_bank_account_transaction_id() {
-        return from_bank_account_transaction_id;
-    }
-
-    public void setFrom_bank_account_transaction_id(Set<From_Bank_Account_Transaction> from_bank_account_transaction_id) {
-        this.from_bank_account_transaction_id = from_bank_account_transaction_id;
-    }
-
-
-    public Set<To_Bank_Account_Transaction> getTo_bank_account_transaction_id() {
-        return to_bank_account_transaction_id;
-    }
-
-    public void setTo_bank_account_transaction_id(Set<To_Bank_Account_Transaction> to_bank_account_transaction_id) {
-        this.to_bank_account_transaction_id = to_bank_account_transaction_id;
-   }
-
-    public void addMoney(float money){
-        this.subtotal += money;
-    }
-
-    public void subMoney(float money){
-        this.subtotal -= money;
-    }
-
-    public Set<Remove_Into_Account> getRemove_into_account() {
-        return remove_into_account;
-    }
-
-    public void setRemove_into_account(Set<Remove_Into_Account> remove_into_account) {
-        this.remove_into_account = remove_into_account;
-    }
-
-    @Override
-    public String toString() {
-        return "Finance_Account_User{" +
-                "finance_account_user_id=" + finance_account_user_id +
-                ", deposit_into_account_id=" + deposit_into_account_id +
-                ", from_bank_account_transaction_id=" + from_bank_account_transaction_id +
-                ", remove_into_account_id=" + remove_into_account +
-                ", to_bank_account_transaction_id=" + to_bank_account_transaction_id +
-                ", bank_account_number='" + bank_account_number + '\'' +
-                ", subtotal=" + subtotal +
-                ", grandtotal=" + grandtotal +
-                ", protect_code='" + protect_code + '\'' +
-                '}';
-    }
 }

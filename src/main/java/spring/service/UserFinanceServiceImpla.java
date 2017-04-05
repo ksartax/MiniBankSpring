@@ -7,6 +7,7 @@ import spring.dao.UsersFinanceDao;
 import spring.model.Finance_Account_User;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
@@ -21,7 +22,7 @@ public class UserFinanceServiceImpla implements UserFinanceService{
     @Autowired
     private UsersFinanceDao usersFinanceDao;
 
-    public Set<Finance_Account_User> depositList(int id) throws NoSuchElementException {
+    public Finance_Account_User depositList(int id) throws NoSuchElementException {
         return usersFinanceDao.depositList(id);
     }
 
@@ -29,11 +30,11 @@ public class UserFinanceServiceImpla implements UserFinanceService{
         return usersFinanceDao.removeList(id);
     }
 
-    public Set<Finance_Account_User> listFromBankAccountTransaction(int id) throws NoSuchElementException {
+    public Finance_Account_User listFromBankAccountTransaction(int id) throws NoSuchElementException {
         return usersFinanceDao.listFromBankAccountTransaction(id);
     }
 
-    public Set<Finance_Account_User> listToBankAccountTransaction(int id) throws NoSuchElementException {
+    public Finance_Account_User listToBankAccountTransaction(int id) throws NoSuchElementException {
         return usersFinanceDao.listToBankAccountTransaction(id);
     }
 

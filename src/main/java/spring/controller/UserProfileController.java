@@ -3,10 +3,13 @@ package spring.controller;
 import org.jboss.logging.annotations.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import spring.logic.RequestStatus;
 import spring.model.User;
 import spring.service.UsersService;
 
@@ -24,8 +27,10 @@ public class UserProfileController extends AppController{
     }
 
     @PostMapping("/profile")
-    public String profile(@RequestBody String string){
-        return string;
+    public ResponseEntity<RequestStatus> profile(@RequestBody String string) throws Exception {
+        return new ResponseEntity<RequestStatus>(
+                new RequestStatus
+                        (null, null, usersService.findByPasswordAndEmail("Seba", "Seba")), HttpStatus.OK);
     }
 
 }

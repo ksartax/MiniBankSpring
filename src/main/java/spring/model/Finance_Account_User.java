@@ -8,7 +8,9 @@ import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -24,16 +26,16 @@ public class Finance_Account_User implements Serializable{
     private int finance_account_user_id;
 
     @OneToMany
-    private Set<Deposit_Into_Account> deposit_into_account = new HashSet<Deposit_Into_Account>();
+    private List<Deposit_Into_Account> deposit_into_account = new ArrayList<Deposit_Into_Account>();
 
     @OneToMany
-    private Set<From_Bank_Account_Transaction> from_bank_account_transaction = new HashSet<From_Bank_Account_Transaction>();
+    private List<From_Bank_Account_Transaction> from_bank_account_transaction = new ArrayList<From_Bank_Account_Transaction>();
 
     @OneToMany
-    private Set<Remove_Into_Account> remove_into_account = new HashSet<Remove_Into_Account>();
+    private List<Remove_Into_Account> remove_into_account = new ArrayList<Remove_Into_Account>();
 
     @OneToMany
-    private Set<To_Bank_Account_Transaction> to_bank_account_transaction = new HashSet<To_Bank_Account_Transaction>();
+    private List<To_Bank_Account_Transaction> to_bank_account_transaction = new ArrayList<To_Bank_Account_Transaction>();
 
     @Column(name = "BANK_ACCOUNT_NUMBER", nullable = false, length = 100)
     private String bank_account_number;
@@ -55,35 +57,35 @@ public class Finance_Account_User implements Serializable{
         this.finance_account_user_id = finance_account_user_id;
     }
 
-    public Set<Deposit_Into_Account> getDeposit_into_account() {
+    public List<Deposit_Into_Account> getDeposit_into_account() {
         return deposit_into_account;
     }
 
-    public void setDeposit_into_account(Set<Deposit_Into_Account> deposit_into_account) {
+    public void setDeposit_into_account(List<Deposit_Into_Account> deposit_into_account) {
         this.deposit_into_account = deposit_into_account;
     }
 
-    public Set<From_Bank_Account_Transaction> getFrom_bank_account_transaction() {
+    public List<From_Bank_Account_Transaction> getFrom_bank_account_transaction() {
         return from_bank_account_transaction;
     }
 
-    public void setFrom_bank_account_transaction(Set<From_Bank_Account_Transaction> from_bank_account_transaction) {
+    public void setFrom_bank_account_transaction(List<From_Bank_Account_Transaction> from_bank_account_transaction) {
         this.from_bank_account_transaction = from_bank_account_transaction;
     }
 
-    public Set<Remove_Into_Account> getRemove_into_account() {
+    public List<Remove_Into_Account> getRemove_into_account() {
         return remove_into_account;
     }
 
-    public void setRemove_into_account(Set<Remove_Into_Account> remove_into_account) {
+    public void setRemove_into_account(List<Remove_Into_Account> remove_into_account) {
         this.remove_into_account = remove_into_account;
     }
 
-    public Set<To_Bank_Account_Transaction> getTo_bank_account_transaction() {
+    public List<To_Bank_Account_Transaction> getTo_bank_account_transaction() {
         return to_bank_account_transaction;
     }
 
-    public void setTo_bank_account_transaction(Set<To_Bank_Account_Transaction> to_bank_account_transaction) {
+    public void setTo_bank_account_transaction(List<To_Bank_Account_Transaction> to_bank_account_transaction) {
         this.to_bank_account_transaction = to_bank_account_transaction;
     }
 

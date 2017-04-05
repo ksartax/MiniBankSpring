@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import spring.logic.RequestStatus;
 import spring.model.Finance_Account_User;
 import spring.service.UserFinanceService;
 
@@ -23,33 +24,46 @@ public class UserFinanceController extends AppController{
     private UserFinanceService userFinanceService;
 
     @PostMapping("/userFinance")
-    public ResponseEntity<Finance_Account_User> getUserFinance(){
-        return new ResponseEntity<Finance_Account_User>(HttpStatus.OK);
+    public ResponseEntity<RequestStatus> getUserFinance(){
+
+        return new ResponseEntity<RequestStatus>(
+                new RequestStatus
+                        ("success", "", userFinanceService.getUserFinance(1)),HttpStatus.OK);
     }
 
     @PostMapping("/listDeposit")
-    public ResponseEntity<Set<Finance_Account_User>> listDeposit(){
-        return new ResponseEntity<Set<Finance_Account_User>>(HttpStatus.OK);
+    public ResponseEntity<RequestStatus> listDeposit(){
+        return new ResponseEntity<RequestStatus>(
+                new RequestStatus
+                        ("success", "", userFinanceService.depositList(1)) ,HttpStatus.OK);
     }
 
     @PostMapping("/listRemove")
-    public ResponseEntity<Finance_Account_User> listRemove(){
-        return new ResponseEntity<Finance_Account_User>(userFinanceService.removeList(1),HttpStatus.OK);
+    public ResponseEntity<RequestStatus> listRemove(){
+        return new ResponseEntity<RequestStatus>(
+                new RequestStatus
+                        ("success","",userFinanceService.removeList(1)) ,HttpStatus.OK);
     }
 
     @PostMapping("/listFromBankAccountTransaction")
-    public ResponseEntity<Set<Finance_Account_User>> listFromBankAccountTransaction(){
-        return new ResponseEntity<Set<Finance_Account_User>>(HttpStatus.OK);
+    public ResponseEntity<RequestStatus> listFromBankAccountTransaction(){
+        return new ResponseEntity<RequestStatus>(
+                new RequestStatus
+                        ("success","", userFinanceService.listFromBankAccountTransaction(1)) ,HttpStatus.OK);
     }
 
     @PostMapping("/listToBankAccountTransaction")
-    public ResponseEntity<Set<Finance_Account_User>> toBankAccountTransaction(){
-        return new ResponseEntity<Set<Finance_Account_User>>(HttpStatus.OK);
+    public ResponseEntity<RequestStatus> toBankAccountTransaction(){
+        return new ResponseEntity<RequestStatus>(
+                new RequestStatus
+                        ("success", "", userFinanceService.listToBankAccountTransaction(1)) ,HttpStatus.OK);
     }
 
     @PostMapping("/getStatusMoney")
-    public ResponseEntity<Finance_Account_User> getStatusMoney(){
-        return new ResponseEntity<Finance_Account_User>(HttpStatus.OK);
+    public ResponseEntity<RequestStatus> getStatusMoney(){
+        return new ResponseEntity<RequestStatus>(
+                new RequestStatus
+                        ("success", "", userFinanceService.getStatusMoney(1)) ,HttpStatus.OK);
     }
 
 }

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import spring.logic.FinanceAccountUserPinGeneration;
+import spring.model.Address_User;
+import spring.model.Contact_User;
 import spring.model.Finance_Account_User;
 import spring.model.User;
 
@@ -45,6 +47,16 @@ public class UsersDaoImpl extends AbstractDao<Integer, User> implements UsersDao
             throw new Exception();
         }
         return (User) list.get(0);
+    }
+
+    public Contact_User addContact(Contact_User contact_user) {
+        getSession().save(contact_user);
+        return contact_user;
+    }
+
+    public Address_User addAddress(Address_User address_user) {
+        getSession().save(address_user);
+        return address_user;
     }
 
 

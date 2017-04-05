@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import spring.logic.ConvertValue;
 import spring.logic.RequestStatus;
 import spring.logic.UserLogin;
+import spring.model.Address_User;
+import spring.model.Contact_User;
 import spring.model.User;
 import spring.service.UsersService;
 
@@ -38,8 +40,16 @@ public class AppController {
 
         try {
             User user;
-            ConvertValue<User> convertValue = new ConvertValue<User>(User.class, string);
-            user = convertValue.convertToObject("user");
+            user = new ConvertValue<User>(User.class, string).convertToObject("user");
+
+            user.setAddress_user_id(usersService.
+                    addAddress(new ConvertValue<Address_User>(Address_User.class, string)
+                            .convertToObject("address")));
+
+            user.setContact_user_id(usersService.
+                    addContact(new ConvertValue<Contact_User>(Contact_User.class, string)
+                            .convertToObject("contact")));
+
             usersService.add(user);
             return new ResponseEntity<RequestStatus>(new RequestStatus("success", ""), HttpStatus.CREATED);
         } catch (IOException e) {

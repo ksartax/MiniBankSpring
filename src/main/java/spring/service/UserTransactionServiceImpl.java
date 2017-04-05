@@ -25,7 +25,7 @@ public class UserTransactionServiceImpl implements UserTransactionService{
 
 
     public void paidMoney(Deposit_Into_Account deposit_into_account) throws SQLException {
-
+        userTransactionsDao.paidMoney(deposit_into_account);
     }
 
     public void transferMoney(To_Bank_Account_Transaction to_bank_account_transaction) throws SQLException {

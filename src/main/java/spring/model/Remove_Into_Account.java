@@ -67,4 +67,5 @@ public class Remove_Into_Account implements Serializable{
     public void setJoiningData(LocalDate joiningData) {
         this.joiningData = joiningData;
     }
+
 }

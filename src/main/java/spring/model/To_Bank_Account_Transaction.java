@@ -23,8 +23,8 @@ public class To_Bank_Account_Transaction implements Serializable{
     private int to_bank_account_transaction_id;
 
     @OneToOne
-    @JoinColumn(name = "from_finance_account_user_id")
-    private Finance_Account_User from_finance_account_user_id;
+    @JoinColumn(name = "to_finance_account_user_id")
+    private Finance_Account_User to_finance_account_user_id;
 
     @Column(name = "PRICE", nullable = false)
     private float price;
@@ -47,12 +47,12 @@ public class To_Bank_Account_Transaction implements Serializable{
         this.to_bank_account_transaction_id = to_bank_account_transaction_id;
     }
 
-    public Finance_Account_User getFrom_finance_account_user_id() {
-        return from_finance_account_user_id;
+    public Finance_Account_User getTo_finance_account_user_id() {
+        return to_finance_account_user_id;
     }
 
-    public void setFrom_finance_account_user_id(Finance_Account_User from_finance_account_user_id) {
-        this.from_finance_account_user_id = from_finance_account_user_id;
+    public void setTo_finance_account_user_id(Finance_Account_User to_finance_account_user_id) {
+        this.to_finance_account_user_id = to_finance_account_user_id;
     }
 
     public float getPrice() {

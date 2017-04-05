@@ -121,5 +121,12 @@ public class Finance_Account_User implements Serializable{
         this.protect_code = protect_code;
     }
 
+    public void subMoney(float price){
+        this.grandtotal -= price;
+    }
+
+    public void addMoney(float price){
+        this.grandtotal += price;
+    }
 
 }

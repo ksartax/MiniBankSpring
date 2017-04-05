@@ -1,5 +1,6 @@
 package spring.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import org.jboss.logging.annotations.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -27,7 +28,7 @@ public class UserProfileController extends AppController{
     }
 
     @PostMapping("/profile")
-    public ResponseEntity<RequestStatus> profile(@RequestBody String string) throws Exception {
+    public ResponseEntity<RequestStatus> profile(@RequestBody JsonNode string) throws Exception {
         return new ResponseEntity<RequestStatus>(
                 new RequestStatus
                         (null, null, usersService.findByPasswordAndEmail("Seba", "Seba")), HttpStatus.OK);

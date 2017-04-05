@@ -14,10 +14,10 @@ public class ConvertValue<T> {
     private ObjectMapper mapper;
     private JsonNode node;
 
-    public ConvertValue(Class<T> typeParameterClass, String json) throws IOException {
+    public ConvertValue(Class<T> typeParameterClass, JsonNode json) throws IOException {
         mapper = new ObjectMapper();
         this.typeParameterClass = typeParameterClass;
-        node = mapper.readTree(json);
+        node = json;
     }
 
     public JsonNode getNode(){

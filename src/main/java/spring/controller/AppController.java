@@ -1,5 +1,6 @@
 package spring.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import org.hibernate.PropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -36,7 +37,7 @@ public class AppController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<RequestStatus> register(@RequestBody String string){
+    public ResponseEntity<RequestStatus> register(@RequestBody JsonNode string){
 
         try {
             User user;
@@ -61,7 +62,7 @@ public class AppController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<RequestStatus>  login(@RequestBody String string){
+    public ResponseEntity<RequestStatus>  login(@RequestBody JsonNode string){
         try {
             ConvertValue<UserLogin> convertValue = new ConvertValue<UserLogin>(UserLogin.class,string);
             UserLogin userLogin = convertValue.convertToObject("login");

@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,7 +27,7 @@ public class Remove_Into_Account implements Serializable{
     @Column(name = "PRICE", nullable = false)
     private float price;
 
-
+    private Date createDate;
 
     @ManyToOne
     @JoinColumn(name = "finance_account_user")
@@ -57,6 +58,11 @@ public class Remove_Into_Account implements Serializable{
         this.price = price;
     }
 
+    public Date getCreateDate() {
+        return createDate;
+    }
 
-
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
 }

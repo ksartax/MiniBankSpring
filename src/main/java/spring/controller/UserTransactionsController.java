@@ -49,6 +49,8 @@ public class UserTransactionsController extends AppController{
 
         to_bank_account_T.setPrice(to_bank_account.getPrice());
 
+        to_bank_account_T.setCreateDate(to_bank_account.getCreateDate());
+
         userTransactionService.transferMoney(to_bank_account_T);
 
         return new ResponseEntity<RequestStatus>(new RequestStatus("Success",null),HttpStatus.OK);

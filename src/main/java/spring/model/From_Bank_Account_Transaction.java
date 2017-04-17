@@ -35,11 +35,6 @@ public class From_Bank_Account_Transaction implements Serializable{
     @JoinColumn(name = "finance_account_user_id")
     private Finance_Account_User finance_account_user_id ;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @Column(name = "create_data", nullable = false)
-    private LocalDate joiningData;
-
     public int getFrom_bank_account_transaction_id() {
         return from_bank_account_transaction_id;
     }
@@ -73,11 +68,4 @@ public class From_Bank_Account_Transaction implements Serializable{
         this.finance_account_user_id = finance_account_user_id;
     }
 
-    public LocalDate getJoiningData() {
-        return joiningData;
-    }
-
-    public void setJoiningData(LocalDate joiningData) {
-        this.joiningData = joiningData;
-    }
 }

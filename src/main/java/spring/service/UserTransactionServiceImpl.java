@@ -29,7 +29,7 @@ public class UserTransactionServiceImpl implements UserTransactionService{
     }
 
     public void transferMoney(To_Bank_Account_Transaction to_bank_account_transaction) throws SQLException {
-
+        userTransactionsDao.transferMoney(to_bank_account_transaction);
     }
 
     public void withdrawMoney(Remove_Into_Account remove_into_account) throws SQLException {

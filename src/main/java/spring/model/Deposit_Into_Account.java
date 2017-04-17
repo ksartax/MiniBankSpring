@@ -31,10 +31,7 @@ public class Deposit_Into_Account implements Serializable{
     @JsonIgnore
     private Finance_Account_User finance_account_user_id;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @Column(name = "create_data", nullable = false)
-    private LocalDate joiningData;
+
 
     public int getDeposit_into_account_id() {
         return deposit_into_account_id;
@@ -60,11 +57,5 @@ public class Deposit_Into_Account implements Serializable{
         this.finance_account_user_id = finance_account_user_id;
     }
 
-    public LocalDate getJoiningData() {
-        return joiningData;
-    }
 
-    public void setJoiningData(LocalDate joiningData) {
-        this.joiningData = joiningData;
-    }
 }

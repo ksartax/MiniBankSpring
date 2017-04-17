@@ -16,5 +16,5 @@ public interface UsersService{
     public User findByPasswordAndEmail(String password, String email) throws Exception;
     public Contact_User addContact(Contact_User contact_user);
     public Address_User addAddress(Address_User address_user);
-
+    public User findById(int id);
 }

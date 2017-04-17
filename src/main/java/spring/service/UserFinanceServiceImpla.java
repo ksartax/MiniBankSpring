@@ -45,4 +45,8 @@ public class UserFinanceServiceImpla implements UserFinanceService{
     public Finance_Account_User getUserFinance(int id) throws NoSuchElementException {
         return usersFinanceDao.getUserFinance(id);
     }
+
+    public Finance_Account_User getBasicFinanceAccountUserNyAccountNumber(String account_number) {
+        return usersFinanceDao.getBasicFinanceAccountUserNyAccountNumber(account_number);
+    }
 }

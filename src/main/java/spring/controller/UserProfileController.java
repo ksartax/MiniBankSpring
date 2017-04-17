@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,9 +31,17 @@ public class UserProfileController extends AppController{
 
     @PostMapping("/profile")
     public ResponseEntity<RequestStatus> profile(@RequestBody JsonNode string) throws Exception {
+
         return new ResponseEntity<RequestStatus>(
                 new RequestStatus
-                        (null, null, usersService.findByPasswordAndEmail("Seba", "Seba")), HttpStatus.OK);
+                        (
+                                null,
+                                null,
+                                usersService.findById
+                                        (
+                                                Integer.valueOf(SecurityContextHolder.getContext().getAuthentication().getName())
+                                        )
+                        ), HttpStatus.OK);
     }
 
 }

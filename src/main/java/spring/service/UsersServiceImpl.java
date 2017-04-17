@@ -32,7 +32,8 @@ public class UsersServiceImpl implements UsersService{
     }
 
     public User findByPasswordAndEmail(String password, String email) throws Exception {
-        return usersDao.findByPasswordAndEmail(password, email);
+        User user = usersDao.findByPasswordAndEmail(password, email);
+        return user;
     }
 
     public Contact_User addContact(Contact_User contact_user) {
@@ -41,5 +42,9 @@ public class UsersServiceImpl implements UsersService{
 
     public Address_User addAddress(Address_User address_user) {
        return usersDao.addAddress(address_user);
+    }
+
+    public User findById(int id) {
+       return usersDao.findById(id);
     }
 }

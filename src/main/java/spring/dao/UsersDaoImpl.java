@@ -33,19 +33,24 @@ public class UsersDaoImpl extends AbstractDao<Integer, User> implements UsersDao
         finance_account_user.setBank_account_number(financeAccountUserPinGeneration.nextSessionId());
         getSession().persist(finance_account_user);
         user.setFinance_account_user_id(finance_account_user);
+
+        Address_User address_user = new Address_User();
+        getSession().persist(address_user);
+        user.setAddress_user_id(address_user);
+
+        Contact_User contact_user = new Contact_User();
+        getSession().persist(contact_user);
+        user.setContact_user_id(contact_user);
+
         getSession().persist(user);
       return user;
     }
 
-    public User findByPasswordAndEmail(String password, String email) throws Exception {
+    public User findByPasswordAndEmail(String password, String email) {
         List list = createEntityCriteria()
                 .add(Restrictions.eq("password", password))
                 .add(Restrictions.eq("email",email))
                 .list();
-
-        if(list.size() == 0){
-            throw new Exception();
-        }
         return (User) list.get(0);
     }
 
@@ -57,6 +62,11 @@ public class UsersDaoImpl extends AbstractDao<Integer, User> implements UsersDao
     public Address_User addAddress(Address_User address_user) {
         getSession().save(address_user);
         return address_user;
+    }
+
+    @Override
+    public User findById(int id) {
+        return getByKey(id);
     }
 
 

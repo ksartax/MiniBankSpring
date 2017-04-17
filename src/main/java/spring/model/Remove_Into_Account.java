@@ -26,10 +26,7 @@ public class Remove_Into_Account implements Serializable{
     @Column(name = "PRICE", nullable = false)
     private float price;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @Column(name = "create_data", nullable = false)
-    private LocalDate joiningData;
+
 
     @ManyToOne
     @JoinColumn(name = "finance_account_user")
@@ -60,12 +57,6 @@ public class Remove_Into_Account implements Serializable{
         this.price = price;
     }
 
-    public LocalDate getJoiningData() {
-        return joiningData;
-    }
 
-    public void setJoiningData(LocalDate joiningData) {
-        this.joiningData = joiningData;
-    }
 
 }

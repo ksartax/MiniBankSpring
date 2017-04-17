@@ -20,5 +20,6 @@ public interface  UserFinanceService {
     public Finance_Account_User listToBankAccountTransaction(int id) throws NoSuchElementException;
     public Finance_Account_User getStatusMoney(int id) throws NoSuchElementException;
     public Finance_Account_User getUserFinance(int id) throws NoSuchElementException;
+    public Finance_Account_User getBasicFinanceAccountUserNyAccountNumber(String account_number);
 
 }

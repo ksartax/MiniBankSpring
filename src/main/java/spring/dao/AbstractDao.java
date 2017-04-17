@@ -29,6 +29,10 @@ public abstract class AbstractDao<PK extends Serializable, T> {
     @Autowired
     private SessionFactory sessionFactory;
 
+    public SessionFactory getSessionBasic(){
+        return sessionFactory;
+    }
+
     protected Session getSession(){
         return sessionFactory.getCurrentSession();
     }

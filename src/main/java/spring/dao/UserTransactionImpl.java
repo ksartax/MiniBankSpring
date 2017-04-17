@@ -18,7 +18,7 @@ import java.sql.SQLException;
 public class UserTransactionImpl extends AbstractDao<Integer, Finance_Account_User> implements UserTransactionsDao{
 
     public void paidMoney(Deposit_Into_Account deposit_into_account) throws SQLException {
-        deposit_into_account.getFinance_account_user_id().subMoney(deposit_into_account.getPrice());
+        deposit_into_account.getFinance_account_user_id().addMoney(deposit_into_account.getPrice());
         getSession().update(deposit_into_account.getFinance_account_user_id());
         getSession().persist(deposit_into_account);
     }

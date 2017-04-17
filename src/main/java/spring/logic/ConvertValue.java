@@ -29,4 +29,9 @@ public class ConvertValue<T> {
         return mapper.convertValue(node.get(jsonElement), typeParameterClass);
     }
 
+    public T convertToObject() throws IllegalArgumentException
+    {
+        return mapper.convertValue(node, typeParameterClass);
+    }
+
 }

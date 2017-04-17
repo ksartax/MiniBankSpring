@@ -6,6 +6,7 @@ import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 import org.omg.CosNaming.NamingContextPackage.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -61,6 +62,11 @@ public class User implements Serializable {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate joiningData;
+
+    public User() {
+    }
+
+
 
     public int getUser_id() {
         return user_id;
@@ -157,6 +163,8 @@ public class User implements Serializable {
     public void setJoiningData(LocalDate joiningData) {
         this.joiningData = joiningData;
     }
+
+
 
     @Override
     public String toString() {
